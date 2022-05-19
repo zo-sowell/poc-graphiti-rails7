@@ -1,0 +1,346 @@
+{
+  "resources": [
+    {
+      "name": "IssueResource",
+      "type": "issues",
+      "graphql_entrypoint": "issues",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "message": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "is_done": {
+          "type": "boolean",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "message": {
+        },
+        "is_done": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "is_done": {
+          "type": "boolean",
+          "operators": [
+            "eq"
+          ],
+          "single": true
+        },
+        "user_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        }
+      },
+      "relationships": {
+        "user": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "UserResource"
+        }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
+    },
+    {
+      "name": "UserResource",
+      "type": "users",
+      "graphql_entrypoint": "users",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "first_name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "last_name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "email": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "first_name": {
+        },
+        "last_name": {
+        },
+        "email": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "first_name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "last_name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+        "issues": {
+          "type": "has_many",
+          "description": null,
+          "resource": "IssueResource"
+        }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
+    }
+  ],
+  "endpoints": {
+    "/api/v1/issues": {
+      "actions": {
+        "index": {
+          "resource": "IssueResource"
+        },
+        "show": {
+          "resource": "IssueResource"
+        },
+        "create": {
+          "resource": "IssueResource"
+        },
+        "update": {
+          "resource": "IssueResource"
+        },
+        "destroy": {
+          "resource": "IssueResource"
+        }
+      }
+    },
+    "/api/v1/users": {
+      "actions": {
+        "index": {
+          "resource": "UserResource"
+        },
+        "show": {
+          "resource": "UserResource"
+        },
+        "create": {
+          "resource": "UserResource"
+        },
+        "update": {
+          "resource": "UserResource"
+        },
+        "destroy": {
+          "resource": "UserResource"
+        }
+      }
+    }
+  },
+  "types": {
+    "integer_id": {
+      "kind": "scalar",
+      "description": "Base Type. Query/persist as integer, render as string."
+    },
+    "uuid": {
+      "kind": "scalar",
+      "description": "Base Type. Like a normal string, but by default only eq/!eq and case-sensitive."
+    },
+    "string_enum": {
+      "kind": "scalar",
+      "description": "String enum type. Like a normal string, but only eq/!eq and case-sensitive. Limited to only the allowed values."
+    },
+    "integer_enum": {
+      "kind": "scalar",
+      "description": "Integer enum type. Like a normal integer, but only eq/!eq filters. Limited to only the allowed values."
+    },
+    "string": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
+    "integer": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
+    "big_decimal": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
+    "float": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
+    "boolean": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
+    "date": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
+    "datetime": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
+    "hash": {
+      "kind": "record",
+      "description": "Base Type."
+    },
+    "array": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_integer_ids": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_uuids": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_string_enums": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_integer_enums": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_strings": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_integers": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_big_decimals": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_floats": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_dates": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_datetimes": {
+      "kind": "array",
+      "description": "Base Type."
+    }
+  }
+}
